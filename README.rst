@@ -30,15 +30,15 @@ Including assets
 
 Rely on ``webpack`` for asset inclusion. Instead of using gulp to copy assets like css or images, just ``require`` them from inside your ``src/index.js``. The behavior of ``require`` differs depending on the type of asset required:
 
-===============     ==================
+=================== ==================
 File extension      `require` behavior
-===============     ==================
+=================== ==================
 ``.js``             Same as node.js, returns the value of ``module.exports`` in the required file
 ``.coffee``         Transpiles to JS, then as above
 ``.css``            Run through autoprefixer, all ``@import`` and ``url()`` assets loaded, styles injected into document
 ``.sass`` ``.scss`` Compiled to CSS, then as above
 ``.jpg`` ``.png``   Either returns a data URI for <1 MB files, or copies file to `/dist` and returns URL reference to file location.
-===============     ==================
+=================== ==================
 
 Folder and file notes
 ---------------------
