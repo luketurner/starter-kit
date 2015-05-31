@@ -1,0 +1,9 @@
+/* Starter bower.json
+ * Contains client-side dependencies missing from npm
+ */
+{
+  "name": "starter-kit",
+  "dependencies": {
+    "skeleton": "~2.0.4"
+  }
+}
