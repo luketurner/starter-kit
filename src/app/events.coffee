@@ -57,5 +57,5 @@ Events.emit = (data) ->
   if not data.type of handlers
     Log.error "no handlers for event type", data
     return
-  Log.debug("emitted #{data.type}")
-  handlers[data.type](data)
+  Log.debug "emitted #{data.type}"
+  handlers[data.type] data

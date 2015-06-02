@@ -15,10 +15,9 @@
     Since the view is a function, this function returns a function.
 
     vdomForView = View.getView()?()
-###
-Immutable     = require 'immutable'
 
-State         = require './state.coffee'
+###
+
 Log           = require './log.coffee'
 Views         = module.exports = {}
 
@@ -29,9 +28,9 @@ Views.add = (re, fn) ->
   viewRegistry.push re: re, fn: fn
 
 Views.getView = (hash) ->
-  hash = location.hash.slice(1) unless hash
+  if not hash then hash = location.hash.slice(1)
   for { re, fn } in viewRegistry
     if re.test hash
       return fn
-  Log.error("no view defined for #{hash}")
+  Log.error "no view defined for #{hash}"
   null

@@ -17,6 +17,7 @@
     Service that detects state changes in events
 
     Events.addService(Renderer.service)
+
 ###
 
 diff            = require 'virtual-dom/diff'

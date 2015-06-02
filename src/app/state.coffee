@@ -10,10 +10,11 @@
   immutable data structure. Once you have a cursor, you can use that to get or set data in the internal state.
   For more details on cursors, see https://github.com/facebook/immutable-js/tree/master/contrib/cursor
 
-  cursor(optional vector path)
+  cursor()
+  cursor(vector path)
     Gets a cursor which can be used to read/write application state.
     Don't keep a cursor too long; they do not update their values because the underlying data is immutable.
-    use state.cursor() to get a cursor for the whole state map (e.g. for equality checking).
+    use State.cursor() to get a cursor for the whole state map (e.g. for equality checking).
 
     curs = State.cursor(['path', 'to', 'your', 'data'])
     curs.deref() # returns value of the cursor when it was made
@@ -27,4 +28,4 @@ Cursor        = require 'immutable/contrib/cursor'
 State         = module.exports = {}
 internalState = Immutable.Map()
 
-State.cursor = (path) -> Cursor.from(internalState, path ? [], (x) -> internalState = x)
+State.cursor  = (path) -> Cursor.from(internalState, path ? [], (x) -> internalState = x)
