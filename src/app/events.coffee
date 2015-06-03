@@ -2,12 +2,14 @@
   Singleton event emitter.
   Purpose is to keep track of what needs to be called when.
 
-  In simplest form, an event emitter is just a kind of dispatch table, where you add handlers to the table and then
-  the emit() call looks up the handler for the specified event and calls it.
+  In simplest form, an event emitter is just a kind of dispatch table, where
+  you add handlers to the table and then the emit() call looks up the handler
+  for the specified event and calls it.
 
-  This implementation also adds "services", which are middleware functions that are composed with all event handlers.
-  Using services was chosen over allowing multiple handlers or "global" handlers because services can do work both
-  before and after the event handler executes.
+  This implementation also adds "services", which are middleware functions
+  that are composed with all event handlers. Using services was chosen over
+  allowing multiple handlers or "global" handlers because services can do work
+  both before and after the event handler executes.
 
   addHandler(string eventType, fn handler)
     Call addHandler to add a handler for a new event type.
@@ -16,9 +18,10 @@
     Events.addHandler("app:sampleevent", (eventData) -> ... )
 
   addService(fn service)
-    Call addService to add a middleware handler, called a "service" to distinguish from regular handlers.
-    All services are triggered for every event. They let you add logic that runs before or after the event handler.
-    Services are expected to use the following middleware pattern.
+    Call addService to add a middleware handler, called a "service" to distinguish
+    from regular handlers. All services are triggered for every event. 
+    They let you add logic that runs before or after the event handler.
+    Services are expected to use the following middleware pattern:
 
     Events.addService (next) ->
       # setup stuff
@@ -28,9 +31,10 @@
         # post-execute stuff
 
   emit(object eventData)
-    Call emit to emit an event object. The "type" key of the object must indicate the event type.
-    Attempts to emit an event with no handler will fail.
-    Handlers are provided the whole object passed into emit, so use it to send context or data.
+    Call emit to emit an event object. The "type" key of the object must
+    indicate the event type. Attempts to emit an event with no handler will
+    fail. Handlers are passed the whole object passed into emit, so use it to 
+    send context or data.
 
     Events.emit(type: "app:sampleevent", value: "a value")
 
@@ -58,4 +62,7 @@ Events.emit = (data) ->
     Log.error "no handlers for event type", data
     return
   Log.debug "emitted #{data.type}"
-  handlers[data.type] data
+  try
+    handlers[data.type] data
+  catch error
+    Log.error "exception while handling event. Event data:", data, " Ex:", error

@@ -2,11 +2,13 @@
   View renderer.
   Purpose is to loop forever and update DOM if state changes.
 
-  Renderer is responsible for determining if, when, and how we should render the view.
-  We do not need to re-render every time the state changes, because those changes might be extremely rapid -- too rapid
-  for the user to see. Instead, as a performance improvement, we use a requestAnimationFrame loop (which usually runs
-  once every 16 ms). A renderer service (for use with our Events component) will do an equality-check on the State after
-  the event handler runs, and if there are any changes, we flag that rendering should happen on the next animation frame.
+  Renderer is responsible for determining when and how we should render the view.
+  We do not need to re-render every time the state changes, because those changes
+  might be extremely rapid -- too rapid for the user to see. Instead, as a
+  performance improvement, we use a requestAnimationFrame loop (which usually runs
+  once every 16 ms). A renderer service (for use with our Events component) will
+  do an equality-check on the State after the event handler runs, and if there
+  are any changes, we flag that rendering should happen on the next animation frame.
 
   loop()
     starts the main renderer loop (async)
@@ -44,7 +46,7 @@ Renderer.loop = ->
   if renderScheduled
     renderScheduled = false
     Log.debug "render triggered"
-    newVDom = Views.getView()?()
+    newVDom = Views.render()
     if newVDom
       if parentNode?
         patch(parentNode, diff(oldVDom, newVDom))
