@@ -40,8 +40,12 @@ Views         = module.exports = {}
 viewRegistry  = []
 
 Views.add = (re, fn) ->
-  if not re instanceof RegExp then Log.error "View.add expects RegExp for 1st arg, got", re; return
-  if typeof fn isnt "function" then Log.error "Views.add expects function for 1st arg, got", fn; return
+  if not re instanceof RegExp
+    Log.error "View.add expects RegExp for 1st arg, got", re
+    return
+  if typeof fn isnt "function"
+    Log.error "Views.add expects function for 1st arg, got", fn
+    return
   viewRegistry.push re: re, fn: fn
 
 Views.render = (hash) ->

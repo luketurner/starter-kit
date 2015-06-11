@@ -53,7 +53,8 @@ Events.addHandler = (type, handler) ->
 
 Events.addService = (svc) ->
   if svc in services then Log.warn "duplicate service added"
-  if Object.keys(handlers).length > 0 then Log.warn "service registered after event(s), may not be called"
+  if Object.keys(handlers).length > 0
+    Log.warn "service registered after event(s), may not be called"
   services.push(svc)
 
 Events.emit = (data) ->
