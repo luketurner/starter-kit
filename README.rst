@@ -4,11 +4,21 @@ Client-side starter kit
 About
 -----
 
-Get started on Javascript experiments quickly with the base starter-kit. This kit includes no client-side frameworks or code, only build tooling and the Skeleton css framework.
+Get started on Javascript experiments quickly with the base starter-kit. This kit includes full build tooling so you can get started fast. It also includes a "scaffolded" Javascript framework based on unidirectional data flow and virtual DOM. Unlike most JS frameworks which are written as black boxes and quickly become bloated in an attempt to support every possible usage, a "scaffolded" framework is meant to be readable, usable, and most importantly, *hackable*, so that developers understand what's gonig on and they can customize the code for their needs without the overhead of features they won't use or integrated libraries they don't want.
 
 Supports CoffeeScript and SASS autocompilation and heavily leverages webpack to simplify requiring and using assets.
 
 Includes webpack-dev-server, a dev webserver with automatic recompilation and browser reloading.
+
+The repository includes different branches depending on how much scaffolded code you want. Currently, the options are are:
+
+:`master`: Contains all scaffolding and build tooling; the complete package.
+:`build-only`: Contains no scaffolded code, only build tooling. Good for getting up-and-running fast with any framework or libraries you want.
+
+To pick which branch you want::
+
+  git clone https://github.com/luketurner/starter-kit.git
+  git checkout <branch_name>
 
 Build commands
 --------------
