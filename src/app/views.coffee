@@ -40,6 +40,8 @@ Views         = module.exports = {}
 viewRegistry  = [] # array of {re, fn} view objects
 
 # Add hashchange event which will trigger a re-render.
+# Note that the handler is a no-op, which is fine -- because
+# we set the `render` flag in the event data, a render will be triggered.
 Events.addHandler "browser:hashchange", ->
 window.onhashchange = -> Events.emit type: "browser:hashchange", render: true
 

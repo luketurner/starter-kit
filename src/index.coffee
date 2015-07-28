@@ -1,6 +1,8 @@
 ###
   Application entry point.
-  Purpose is to wire up everything else.
+  Wires up everything else. Everything required here,
+  or required by anything required here, will be packaged
+  up and included in the application.
 ###
 
 # Require CSS and other assets
@@ -19,5 +21,7 @@ Views    = require './app/views.coffee'
 Views.add /^(home)?$/, require './home/view.coffee'
 Views.add /.*/       , require './404.coffee'
 
+Log.logLevel = 3 # enable info/debug logging
 Log.info "Application Started"
-Renderer.loop()
+
+Renderer.loop() # start renderer infinite loop

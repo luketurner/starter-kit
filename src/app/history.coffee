@@ -63,6 +63,9 @@ Events.addService (next) ->
       storeHistory()
       storeIndex()
 
+# Attempts to load history data from localStorage into the component's
+# internal fields. Will overwrite any existing history.
+# Returns `true` if loading was successful, `false` if it failed.
 History.loadFromStorage = ->
   index = window.localStorage.getItem(indexKey)
   arrayString = window.localStorage.getItem(historyKey)

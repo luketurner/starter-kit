@@ -17,10 +17,14 @@
     starts the main renderer loop
 ###
 
+# Require needed virtual-dom functions
 diff            = require 'virtual-dom/diff'
 patch           = require 'virtual-dom/patch'
 createElement   = require 'virtual-dom/create-element'
-matches         = require './util/matches.coffee'
+
+# using our own `matches` implementation instead of `lodash.matches`
+# see comments in util/matches.coffee for rationale.
+matches         = require './util/matches.coffee' 
 
 State           = require './state.coffee'
 Log             = require './log.coffee'
@@ -29,17 +33,22 @@ Events          = require './events.coffee'
 Renderer        = module.exports = {}
 
 
-renderScheduled = true
-oldVDom         = null
-parentNode      = null
+renderScheduled = true # if set to `true`, we will re-render on next loop
+oldVDom         = null # contains old dom for diffing purposes
+parentNode      = null # points to a real DOM node
 
+# Add service that will schedule a re-render if the event either:
+#  1. changed app/state
+#  2. has the `render` property set to `true` in event data
 Events.addService (next) ->
   (data) ->
     match = matches(State)
     next(data)
     if data.render or not match(State) then renderScheduled = true
 
-Renderer.render = ->
+# Render function which calls into Views component for a VTree
+# and then patches it onto the DOM. 
+render = ->
   renderScheduled = false
   Log.debug "render triggered"
   newVDom = Views.render()
@@ -53,7 +62,9 @@ Renderer.render = ->
   else
     Log.error "renderer got empty view data"
 
+# Renderer "main loop" basically throttles renders to only
+# happen once per animation frame.
 Renderer.loop = ->
   if renderScheduled
-    Renderer.render()
+    render()
   requestAnimationFrame(Renderer.loop)
