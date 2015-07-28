@@ -48,12 +48,10 @@ withServices = (fn) -> (fn = svc(fn) for svc in services) and fn # middleware co
 
 Events.addHandler = (type, handler) ->
   if type of handlers then Log.error "overwriting existing handler for type '#{type}'"
-  handlers[type] = withServices handler
+  handlers[type] = handler
 
 Events.addService = (svc) ->
   if svc in services then Log.warn "duplicate service added"
-  if Object.keys(handlers).length > 0
-    Log.warn "service registered after event(s), may not be called"
   services.push(svc)
 
 Events.emit = (data) ->
@@ -63,6 +61,6 @@ Events.emit = (data) ->
     return
   Log.debug "emitted #{data.type}"
   try
-    handlers[data.type] data
+    withServices(handlers[data.type])(data)
   catch error
     Log.error "exception while handling event. Event data:", data, " Ex:", error

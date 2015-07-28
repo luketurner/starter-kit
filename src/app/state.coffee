@@ -8,10 +8,4 @@
   where everything is a module.
 ###
 
-Immutable     = require 'immutable'
-Cursor        = require 'immutable/contrib/cursor'
-
-State         = module.exports = {}
-internalState = Immutable.Map()
-
-State.cursor  = (path) -> Cursor.from(internalState, path ? [], (x) -> internalState = x)
+module.exports = {}

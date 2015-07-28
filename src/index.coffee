@@ -16,10 +16,6 @@ Events   = require './app/events.coffee'
 Log      = require './app/log.coffee'
 Views    = require './app/views.coffee'
 
-# Add needed services to event emitter before we start adding handlers.
-# Note that first-added is first-called on the request and last-called on the response.
-Events.addService Renderer.service
-
 # Add event handlers for some browser events
 # Even if the handlers are noops, this means the browser events will trigger
 # all of our services as well.

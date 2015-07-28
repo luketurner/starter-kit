@@ -20,35 +20,40 @@
 diff            = require 'virtual-dom/diff'
 patch           = require 'virtual-dom/patch'
 createElement   = require 'virtual-dom/create-element'
+matches         = require './util/matches.coffee'
 
 State           = require './state.coffee'
 Log             = require './log.coffee'
 Views           = require './views.coffee'
+Events          = require './events.coffee'
 Renderer        = module.exports = {}
+
 
 renderScheduled = true
 oldVDom         = null
 parentNode      = null
 
-Renderer.service = (next) ->
+Events.addService (next) ->
   (data) ->
-    oldState = State.cursor().deref()
+    match = matches(State)
     next(data)
-    newState = State.cursor().deref()
-    renderScheduled = true unless oldState.equals newState
+    if data.render or not match(State) then renderScheduled = true
+
+Renderer.render = ->
+  renderScheduled = false
+  Log.debug "render triggered"
+  newVDom = Views.render()
+  if newVDom
+    if parentNode?
+      patch(parentNode, diff(oldVDom, newVDom))
+    else
+      parentNode = createElement newVDom
+      document.body.appendChild(parentNode)
+    oldVDom = newVDom
+  else
+    Log.error "renderer got empty view data"
 
 Renderer.loop = ->
   if renderScheduled
-    renderScheduled = false
-    Log.debug "render triggered"
-    newVDom = Views.render()
-    if newVDom
-      if parentNode?
-        patch(parentNode, diff(oldVDom, newVDom))
-      else
-        parentNode = createElement newVDom
-        document.body.appendChild(parentNode)
-        oldVDom = newVDom
-    else
-      Log.error "renderer got empty view data"
+    Renderer.render()
   requestAnimationFrame(Renderer.loop)
