@@ -4,7 +4,7 @@ Client-side starter kit
 About
 -----
 
-Get started on Javascript experiments quickly with the base starter-kit. This kit includes no client-side frameworks or code, only build tooling and the Skeleton css framework.
+Get started on Javascript experiments quickly with the base starter-kit. This kit includes no client-side frameworks or code, only build tooling.
 
 Supports CoffeeScript and SASS autocompilation and heavily leverages webpack to simplify requiring and using assets.
 
@@ -15,7 +15,7 @@ Build commands
 
 First, get dependencies::
 
-  npm i -g bower webpack gulp 
+  npm i -g webpack gulp
   npm i
   bower i
 
@@ -47,26 +47,24 @@ Folder and file notes
 
 /                   misc files
 /package.json       template for NPM 
-/bower.json         minimal template for Bower package manger
 /gulpfile.json      gulp task definitions (copied from webpack docs)
 /webpack.config.js  webpack configuration
-/test               mocha tests [in progress]
 /dist               output folder for distribution
 /src                All Javascript source and other assets needed for the application
 /src/index.coffee   entry point for the app -- all resources and components are ``require``d here.
 /src/index.html     base html document (compiled to dist/index.html)
 
-Package inclusion explanations
-------------------------------
+Packages
+--------
 
-:skeleton: CSS sanity framework
-:npm: base package manager
-:bower: used if needed for additional client-side packages
-:gulp: build script helper
-:webpack: including js/css/assets
-:coffee-loader: transpiles \*.coffee files
-:sass-loader: compiles \*.s[ac]ss files
-:autoprefixer-loader: applies vendor prefixes to css
-:style-loader: loads CSS styles and applies them automatically
-:css-loader: traverses ``@import`` and ``url()`` access in css
-:webpack-dev-server: provides a development server with livereload
+::
+
+                npm | base package manager
+               gulp | build script helper
+            webpack | including js/css/assets
+      coffee-loader | transpiles \*.coffee files
+        sass-loader | compiles \*.s[ac]ss files
+autoprefixer-loader | applies vendor prefixes to css
+       style-loader | loads CSS styles and applies them automatically
+         css-loader | traverses ``@import`` and ``url()`` access in css
+ webpack-dev-server | provides a development server with livereload
