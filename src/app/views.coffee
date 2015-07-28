@@ -34,9 +34,15 @@
 ###
 
 Log           = require './log.coffee'
+Events        = require './events.coffee'
 Views         = module.exports = {}
 
 viewRegistry  = [] # array of {re, fn} view objects
+
+# Add hashchange event which will trigger a re-render.
+Events.addHandler "browser:hashchange", ->
+window.onhashchange = -> Events.emit type: "browser:hashchange", render: true
+
 
 Views.add = (re, fn) ->
   if not re instanceof RegExp

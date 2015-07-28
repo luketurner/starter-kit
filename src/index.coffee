@@ -16,17 +16,6 @@ Events   = require './app/events.coffee'
 Log      = require './app/log.coffee'
 Views    = require './app/views.coffee'
 
-# Add event handlers for some browser events
-# Even if the handlers are noops, this means the browser events will trigger
-# all of our services as well.
-
-Events.addHandler "browser:hashchange", ->null
-window.onhashchange = () -> Events.emit type: "browser:hashchange"
-
-# Do we need popstate as well as hashchange? should be quite low overhead even if both fire
-# Events.addHandler "browser:popstate"  , ->null
-# window.onpopstate   = () -> Events.emit type: "browser:popstate"
-
 # Register our views
 Views.add /^(home)?$/, require './home/view.coffee'
 Views.add /.*/       , require './404.coffee'
