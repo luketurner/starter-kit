@@ -10,10 +10,10 @@ Supports CoffeeScript and SASS autocompilation and heavily leverages webpack to 
 
 Includes webpack-dev-server, a dev webserver with automatic recompilation and browser reloading.
 
-The repository includes different branches depending on how much scaffolded code you want. Currently, the options are are:
+The repository includes different branches depending on how much scaffolded code you want. Currently, the options are are::
 
-:`master`: Contains all scaffolding and build tooling; the complete package.
-:`build-only`: Contains no scaffolded code, only build tooling. Good for getting up-and-running fast with any framework or libraries you want.
+  master      Contains all scaffolding and build tooling; the complete package.
+  build-only  Contains no scaffolded code, only build tooling. Good for getting up-and-running fast with any framework or libraries you want.
 
 To pick which branch you want::
 
@@ -25,7 +25,7 @@ Build commands
 
 First, get dependencies::
 
-  npm i -g bower webpack gulp 
+  npm i -g webpack gulp
   npm i
   bower i
 
@@ -57,26 +57,24 @@ Folder and file notes
 
 /                   misc files
 /package.json       template for NPM 
-/bower.json         minimal template for Bower package manger
 /gulpfile.json      gulp task definitions (copied from webpack docs)
 /webpack.config.js  webpack configuration
-/test               mocha tests [in progress]
 /dist               output folder for distribution
 /src                All Javascript source and other assets needed for the application
 /src/index.coffee   entry point for the app -- all resources and components are ``require``d here.
 /src/index.html     base html document (compiled to dist/index.html)
 
-Package inclusion explanations
-------------------------------
+Packages
+--------
 
-:skeleton: CSS sanity framework
-:npm: base package manager
-:bower: used if needed for additional client-side packages
-:gulp: build script helper
-:webpack: including js/css/assets
-:coffee-loader: transpiles \*.coffee files
-:sass-loader: compiles \*.s[ac]ss files
-:autoprefixer-loader: applies vendor prefixes to css
-:style-loader: loads CSS styles and applies them automatically
-:css-loader: traverses ``@import`` and ``url()`` access in css
-:webpack-dev-server: provides a development server with livereload
+::
+
+                npm | base package manager
+               gulp | build script helper
+            webpack | including js/css/assets
+      coffee-loader | transpiles \*.coffee files
+        sass-loader | compiles \*.s[ac]ss files
+autoprefixer-loader | applies vendor prefixes to css
+       style-loader | loads CSS styles and applies them automatically
+         css-loader | traverses ``@import`` and ``url()`` access in css
+ webpack-dev-server | provides a development server with livereload
