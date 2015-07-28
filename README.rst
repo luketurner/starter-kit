@@ -25,7 +25,7 @@ Build commands
 
 First, get dependencies::
 
-  npm i -g webpack gulp
+  npm i -g bower webpack gulp
   npm i
   bower i
 
@@ -58,6 +58,7 @@ Folder and file notes
 /                   misc files
 /package.json       template for NPM 
 /gulpfile.json      gulp task definitions (copied from webpack docs)
+/bower.json         Bower dependency file (for client-side deps that NPM is missing)
 /webpack.config.js  webpack configuration
 /dist               output folder for distribution
 /src                All Javascript source and other assets needed for the application
@@ -69,6 +70,7 @@ Packages
 
 ::
 
+            skeleton | lightweight css framework
                  npm | base package manager
                 gulp | build script helper
              webpack | including js/css/assets
