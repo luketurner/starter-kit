@@ -1,6 +1,6 @@
 ###
-  Singleton event emitter.
-  Purpose is to keep track of what needs to be called when.
+  app/events
+  Singleton event emitter wires everything together.
 
   In simplest form, an event emitter is just a kind of dispatch table, where
   you add handlers to the table and then the emit() call looks up the handler
@@ -15,7 +15,7 @@
     Call addHandler to add a handler for a new event type.
     Only one handler is permitted per event type.
 
-    Events.addHandler("app:sampleevent", (eventData) -> ... )
+    Events.addHandler "app:sampleevent", (eventData) -> ...
 
   addService(fn service)
     Call addService to add a middleware handler, called a "service" to distinguish
@@ -24,28 +24,27 @@
     Services are expected to use the following middleware pattern:
 
     Events.addService (next) ->
-      # setup stuff
+      # setup stuff (only run once)
       (data) ->
         # pre-execute stuff
         next(data)
         # post-execute stuff
 
-  emit(object eventData)
-    Call emit to emit an event object. The "type" key of the object must
+  emit(eventData)
+    Call emit to emit an event. The "type" key of the eventData object must
     indicate the event type. Attempts to emit an event with no handler will
     fail. Handlers are passed the whole object passed into emit, so use it to 
     send context or data.
 
-    Events.emit(type: "app:sampleevent", value: "a value")
-
+    Events.emit type: "app:sampleevent", value: "a value"
 ###
 
 Log          = require './log.coffee'
 Events       = module.exports = {}
 
-handlers     = {}
-services     = []
-withServices = (fn) -> (fn = svc(fn) for svc in services) and fn
+handlers     = {} # table mapping eventType -> handlerFunction
+services     = [] # list of middleware functions
+withServices = (fn) -> (fn = svc(fn) for svc in services) and fn # middleware composer
 
 Events.addHandler = (type, handler) ->
   if type of handlers then Log.error "overwriting existing handler for type '#{type}'"

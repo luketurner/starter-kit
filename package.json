@@ -8,7 +8,7 @@
   "main": "src/index.js",
   "scripts": {
     "build": "gulp build",
-    "server": "gulp webpack-dev-server",
+    "start": "gulp webpack-dev-server",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "dependencies": {},

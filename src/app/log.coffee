@@ -1,6 +1,6 @@
 ###
-  Logging utility.
-  Purpose is to make logging convenient, consistent, and easy to adjust.
+  app/log
+  Simple, convenient logging utility
 
   Supports 4 log levels: error, warn, info, debug
 
@@ -9,9 +9,6 @@
   info(msgs...)
   debug(msgs...)
     Logs the messages if the log level is sufficiently high.
-
-    Log.warn("this might be a problem")
-
 ###
 
 Log = module.exports = {}
