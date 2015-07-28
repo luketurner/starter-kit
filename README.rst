@@ -59,12 +59,12 @@ Packages
 
 ::
 
-                npm | base package manager
-               gulp | build script helper
-            webpack | including js/css/assets
-      coffee-loader | transpiles \*.coffee files
-        sass-loader | compiles \*.s[ac]ss files
-autoprefixer-loader | applies vendor prefixes to css
-       style-loader | loads CSS styles and applies them automatically
-         css-loader | traverses ``@import`` and ``url()`` access in css
- webpack-dev-server | provides a development server with livereload
+                 npm | base package manager
+                gulp | build script helper
+             webpack | including js/css/assets
+       coffee-loader | transpiles \*.coffee files
+         sass-loader | compiles \*.s[ac]ss files
+ autoprefixer-loader | applies vendor prefixes to css
+        style-loader | loads CSS styles and applies them automatically
+          css-loader | traverses ``@import`` and ``url()`` access in css
+  webpack-dev-server | provides a development server with livereload
