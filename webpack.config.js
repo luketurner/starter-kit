@@ -16,14 +16,15 @@ module.exports = {
     entry: "./src/index.coffee",
     output: {
         path: path.join(__dirname, "dist"),
-        publicPath: "/dist/",
+        publicPath: "",
         filename: "main.js"
     },
     module: {
         loaders: [
             // CSS/SASS
             { test: /\.css$/,     loader: "style!css!autoprefixer" },
-            { test: /\.s[ac]ss$/, loader: "style!css!autoprefixer!sass" },
+            { test: /\.scss$/,    loader: "style!css!autoprefixer!sass" },
+            { test: /\.sass$/,    loader: "style!css!autoprefixer!sass?indentedSyntax" },
             
             // CoffeeScript
             { test: /\.coffee$/,                 loader: "coffee" },
@@ -31,7 +32,7 @@ module.exports = {
             
             // Images, fonts, etc.
             { test: /\.(png|jpe?g|gif)$/,    loader: "url?limit=1000" },
-            { test: /\.(ttf|eof|svg|woff)$/, loader: "file" }
+            { test: /\.(ttf|eot|svg|woff)(\?.+)?$/, loader: "file" }
         ]
     },
     plugins: []
