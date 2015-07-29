@@ -17,7 +17,6 @@ Events.addHandler 'home:clicked', (ev) ->
 # This can be called by the Views component to render the view.
 # Add DOM event listeners that directly call `Events.emit` to raise
 # events that you have defined using Events.addHandler.
-# The function is registered as a view in `index.coffee`
 module.exports = ->
   h 'div', [
     h 'h3', 'Home'

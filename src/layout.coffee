@@ -1,3 +1,10 @@
+###
+  layout.coffee
+  Provides an example of a "layout view", which is just a middleware function.
+  See the comments in the `app/route` component for an extensive explanation of views,
+  or find an example usage of this layout view in `index.coffee`.
+###
+
 h = require 'virtual-dom/h'
 
 module.exports = (innerView) ->
