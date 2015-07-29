@@ -1,9 +1,9 @@
 Getting started with client-side development
 ============================================
 
-starter-kit is a scaffold for a client-side application, like you might find on yeoman_. 
+starter-kit_ is a scaffold for a client-side application, like you might find on yeoman_. 
 
-The starter-kit scaffold has two major parts. The first part is what you might think of as traditional scaffolding: sane, integrated configurations for npm_, bower_, webpack_, and gulp_. If that's all you want, check out the ``build-only`` branch.
+The starter-kit scaffold has two major parts. The first part is what you might think of as traditional scaffolding: sane, integrated configurations for npm_, bower_, webpack_, and gulp_. If that's all you want, check out the build-only_ branch.
 
 The second part is more unusual, and a lot more interesting: a set of modular and hackable components, written in CoffeeScript, that can be used to jump-start your SPA development. These components are not hidden away in a dozen different packages in your ``node_modules`` folder -- they live right alongside the rest of your application code, so that you can extend or adjust or replace them as your application evolves.
 
@@ -14,6 +14,14 @@ For example, the ``app/route`` component, which implements a client-side router,
 The components are summarized in the Components_ section.
 For details about how to include js/coffee/css/jpeg/etc. files in your application, see `Using Webpack`_
 
+CoffeeScript components inspired by mercury_, re-frame_, Backbone_, and Flux_.
+
+.. _Backbone: http://backbonejs.org/
+.. _mercury: https://github.com/Raynos/mercury
+.. _re-frame: https://github.com/Day8/re-frame
+.. _flux: https://facebook.github.io/flux/
+.. _starter-kit: https://github.com/luketurner/starter-kit
+.. _build-only: https://github.com/luketurner/starter-kit/tree/build-only
 .. _yeoman: http://yeoman.io/
 .. _npm: https://www.npmjs.com/
 .. _bower: http://bower.io/
