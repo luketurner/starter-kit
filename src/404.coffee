@@ -3,4 +3,7 @@
 ###
 h = require 'virtual-dom/h'
 
-module.exports = -> h "p", "Page not found"
+module.exports = ->
+  h "div", [
+    h "h3", "404"
+    h "p", "Page not found!"]

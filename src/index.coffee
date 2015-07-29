@@ -13,15 +13,21 @@ require '../bower_components/skeleton/css/skeleton.css'
 require 'file?name=[name].[ext]!./index.html'
 
 # Require application components
-Renderer = require './app/renderer.coffee'
-Log      = require './app/log.coffee'
-Views    = require './app/views.coffee'
+Renderer   = require './app/renderer.coffee'
+Log        = require './app/log.coffee'
+Route      = require './app/route.coffee'
 
-# Register our views
-Views.add /^(home)?$/, require './home/view.coffee'
-Views.add /.*/       , require './404.coffee'
+# Generate root view. Note that this is just an example of
+# a root view, which gives you a sense of the power that you
+# can achieve -- layouts, routes, and so forth. See notes in
+# app/route.coffee for more details on views.
+withLayout = require './layout.coffee'
+rootView = withLayout Route.defmulti(
+  [/^(home)?$/, require './home/view.coffee']
+  [/^about$/  , require './about/view.coffee']
+  [/.*/       , require './404.coffee'])
 
 Log.logLevel = 3 # enable info/debug logging
 Log.info "Application Started"
 
-Renderer.loop() # start renderer infinite loop
+Renderer.loop(rootView) # start renderer infinite loop
