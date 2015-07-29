@@ -12,7 +12,8 @@ These components encapsulate powerful patterns, like event emitters, rendering, 
 For example, the ``app/route`` component, which implements a client-side router, has only about 20 lines of code, and yet it provides all the key features of something like `page.js`_ (300 lines) or react-router_ (which is enormous). Of course, it might be missing some feature that is important for your specific application, in which case you can easily extend it or even completely replace it with a more comprehensive 3rd party routing library or your own custom router.
 
 The components are summarized in the Components_ section.
-For details about how to include js/coffee/css/jpeg/etc. files in your application, see `Using Webpack`_
+
+For details about how to include js/coffee/css/jpeg/etc. files in your application, see `Using Webpack`_.
 
 CoffeeScript components inspired by mercury_, re-frame_, Backbone_, and Flux_.
 
