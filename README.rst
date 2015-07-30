@@ -13,7 +13,7 @@ For example, the ``app/route`` component, which implements a client-side router,
 
 The components are very well-documented in their respective source files. An overview of all the components is available in the Components_ section of this README.
 
-For details about how to include different assets in your application, see `Using Webpack`_. Generally speaking, just use ``require`` to include HTML, CSS, S[AC]SS, images, fonts, JavaScript, and CoffeeScript.
+For details about how to include different assets in your application, see the `Using Webpack`_ section. Generally speaking, though, you just use CommonJS-style ``require`` to include HTML, CSS, S[AC]SS, images, fonts, JavaScript, and CoffeeScript. All asset handling is done through webpack_.
 
 The CoffeeScript components in this project were inspired by many sources. Using lightweight components to "roll your own" application-specific framework was an idea inspired by "modular frameworks" like mercury_ and ampersand_. The general architecture of the components, emphasizing event handling, centralized state, and virtual DOM, was modeled after unidirectional data flow architectures like re-frame_ and Flux_. 
 
@@ -31,10 +31,12 @@ The CoffeeScript components in this project were inspired by many sources. Using
 .. _react-router: https://github.com/rackt/react-router
 .. _page.js: https://visionmedia.github.io/page.js/
 
-Getting started
-===============
+Actually getting started
+========================
 
-First, get dependencies::
+Check out the repository. If you want the starter CoffeeScript components, stick with the ``master`` branch. If you don't want any source code, because you plan on using your own framework or writing your app from scratch, you can check out the ``build-only`` branch instead.
+
+Next, get dependencies::
 
   npm i -g bower webpack gulp
   npm i
@@ -46,7 +48,7 @@ Then you can use the build scripts::
   gulp build-dev   development build (auto-rebuilds on file changes)
   gulp build       release build - produces uglified, production ready code in /dist
   
-The "entry point" for the application's compile process is ``src/index.coffee``. It is started with a simple example application with two views, ``about`` and ``home``. You will probably want to remove the ``src/about`` and ``src/home`` folders after you get a sense of how views and routing work, and update the ``index.coffee`` to use your custom views and other components.
+The "entry point" for the application's compile process is ``src/index.coffee``. It is initialized with a simple example application with two views, ``about`` and ``home``. You will probably want to remove the ``src/about`` and ``src/home`` folders after you get a sense of how views and routing work, and update the ``index.coffee`` to use your custom views and other components.
 
 You may use whatever file structure you want to organize your code and other assets inside ``/src``. Perhaps you put all your SASS in ``/src/styles``, views in ``/src/views``, etc. However, I recommend that you use the strategy outlined in `Angular Best Practices for App Structure`_. In short, the idea is that you separate your application into logical units, like ``main``, ``editor``, ``detailView``, ``adminLogin``, etc. and make a separate folder for each unit. Then the folder will contain everything the unit needs -- a view, CoffeeScript modules, stylesheets, image assets, etc. This is a kind of domain-driven method in which the file structure represents the logical structure of the application, and each logical component is encapsulated in a single folder instead of spread out among multiple directories.
 
