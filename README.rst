@@ -44,8 +44,8 @@ Next, get dependencies::
 
 Then you can use the build scripts::
 
-  gulp [server]    runs dev webserver with livereload
-  gulp build-dev   development build (auto-rebuilds on file changes)
+  gulp dev-server  runs dev webserver with livereload
+  gulp build-dev   development build with file watcher on /src
   gulp build       release build - produces uglified, production ready code in /dist
   
 The "entry point" for the application's compile process is ``src/index.coffee``. It is initialized with a simple example application with two views, ``about`` and ``home``. You will probably want to remove the ``src/about`` and ``src/home`` folders after you get a sense of how views and routing work, and update the ``index.coffee`` to use your custom views and other components.
