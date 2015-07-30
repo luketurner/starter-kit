@@ -1,23 +1,23 @@
 Getting started with client-side development
 ============================================
 
-starter-kit_ is a scaffold for a client-side application, like you might find on yeoman_. 
+starter-kit_ is a scaffold for quickly getting started on a new client-side application, like what you might find on yeoman_. 
 
 The starter-kit scaffold has two major parts. The first part is what you might think of as traditional scaffolding: sane, integrated configurations for npm_, bower_, webpack_, and gulp_. If that's all you want, check out the build-only_ branch.
 
-The second part is more unusual, and a lot more interesting: a set of modular and hackable components, written in CoffeeScript, that can be used to jump-start your SPA development. These components are not hidden away in a dozen different packages in your ``node_modules`` folder -- they live right alongside the rest of your application code, so that you can extend or adjust or replace them as your application evolves.
+The second part is more unusual, and a lot more interesting: a set of modular and hackable components, written in CoffeeScript, that can be used to jump-start your SPA development. These components live right alongside the rest of your application code, not hidden away inside the ``node_modules`` folder, so that you can easily extend or adjust or replace them as your application evolves.
 
-These components encapsulate powerful patterns, like event emitters, rendering, and routing, that are included in pretty much every client-side framework out there. They provide a middle ground between completely reinventing the wheel, and using a framework where you don't control the code. In writing these components I tried to emphasize clarity, elegance, and generality over being "magic". Instead of packing on the features and edge case support, they were kept lightweight so that developers can easily read the component code directly and modify it themselves to handle their application's specific needs.
+These components encapsulate powerful patterns, like event emitters, rendering, and routing, that are included in pretty much every client-side framework out there. They provide a middle ground between completely reinventing the wheel, and using a framework where you don't control the code. In writing these components I tried to emphasize clarity, consistency, and generality over being "magic". Instead of packing on the features and edge case support, they were kept lightweight so that developers can easily read and understand the code and modify it themselves to handle their application's specific needs.
 
-For example, the ``app/route`` component, which implements a client-side router, has only about 20 lines of code, and yet it provides all the key features of something like `page.js`_ (300 lines) or react-router_ (which is enormous). Of course, it might be missing some feature that is important for your specific application, in which case you can easily extend it or even completely replace it with a more comprehensive 3rd party routing library or your own custom router.
+For example, the ``app/route`` component, which implements a client-side router, has only about 20 lines of code, and yet it provides all the key features of something like `page.js`_ (300 lines) or react-router_ (over 20 *files*). Of course, ``app/route`` might be missing some feature that is important for your specific application, in which case you can easily extend it or even completely replace it with a more comprehensive 3rd party routing library or your own custom router.
 
-The components are summarized in the Components_ section.
+The components are very well-documented in their respective source files. An overview of all the components is available in the Components_ section of this README.
 
-For details about how to include js/coffee/css/jpeg/etc. files in your application, see `Using Webpack`_.
+For details about how to include different assets in your application, see `Using Webpack`_. Generally speaking, just use ``require`` to include HTML, CSS, S[AC]SS, images, fonts, JavaScript, and CoffeeScript.
 
-CoffeeScript components inspired by mercury_, re-frame_, Backbone_, and Flux_.
+The CoffeeScript components in this project were inspired by many sources. Using lightweight components to "roll your own" application-specific framework was an idea inspired by "modular frameworks" like mercury_ and ampersand_. The general architecture of the components, emphasizing event handling, centralized state, and virtual DOM, was modeled after unidirectional data flow architectures like re-frame_ and Flux_. 
 
-.. _Backbone: http://backbonejs.org/
+.. _ampersand: http://ampersandjs.com/
 .. _mercury: https://github.com/Raynos/mercury
 .. _re-frame: https://github.com/Day8/re-frame
 .. _flux: https://facebook.github.io/flux/
@@ -43,8 +43,16 @@ First, get dependencies::
 Then you can use the build scripts::
 
   gulp [server]    runs dev webserver with livereload
-  gulp build-dev   development build
-  gulp build       release build
+  gulp build-dev   development build (auto-rebuilds on file changes)
+  gulp build       release build - produces uglified, production ready code in /dist
+  
+The "entry point" for the application's compile process is ``src/index.coffee``. It is started with a simple example application with two views, ``about`` and ``home``. You will probably want to remove the ``src/about`` and ``src/home`` folders after you get a sense of how views and routing work, and update the ``index.coffee`` to use your custom views and other components.
+
+You may use whatever file structure you want to organize your code and other assets inside ``/src``. Perhaps you put all your SASS in ``/src/styles``, views in ``/src/views``, etc. However, I recommend that you use the strategy outlined in `Angular Best Practices for App Structure`_. In short, the idea is that you separate your application into logical units, like ``main``, ``editor``, ``detailView``, ``adminLogin``, etc. and make a separate folder for each unit. Then the folder will contain everything the unit needs -- a view, CoffeeScript modules, stylesheets, image assets, etc. This is a kind of domain-driven method in which the file structure represents the logical structure of the application, and each logical component is encapsulated in a single folder instead of spread out among multiple directories.
+
+In the same sense, the ``app`` folder should be left for global, app-level components, which may be referenced and used from anywhere in the application.
+
+.. _Angular best practices for app structure: https://docs.google.com/document/d/1XXMvReO8-Awi1EZXAXS4PzDzdNvV6pGcuaF4Q9821Es/pub
 
 Components
 ==========
