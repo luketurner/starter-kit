@@ -108,14 +108,14 @@ The webpack entry point is defined to be ``src/index.coffee``, which means that 
 .. list-table::
 
   * - ``.js`` ``.coffee``
-    - similar to node.js. Returns the value of ``module.exports`` from the required file.
+    - Uses CommonJS pattern. Returns the value of ``module.exports`` from the required file.
       CoffeeScript is automatically compiled.
   * - ``.css`` ``.sass`` ``.scss``
     - SCSS/SASS is compiled if applicable. Then the resulting CSS is run through ``autoprefixer``,
       and finally the resulting rules are directly applied to the HTML (no ``link`` elements needed).
       Note that using ``url()`` to reference images and fonts "just works".
   * - ``.png`` ``.jpeg`` ``.gif``
-    - returns a Data URI for <1 MB files, otherwise copies the file to ``/dist`` and returns a relative URL
-      to the ceated file.
+    - returns a Data URI for <300 KB files, otherwise copies the file to ``/dist`` and returns a relative URL
+      to the created file.
   * - ``.ttf`` ``.eot`` ``.svg`` ``.woff``
     - Copies the file into ``/dist`` and returns a relative URL to the created file.
