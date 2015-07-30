@@ -10,14 +10,14 @@ var WebpackDevServer = require("webpack-dev-server");
 var webpackConfig = require("./webpack.config.js");
 
 // The development server (the recommended option for development)
-gulp.task("default", ["webpack-dev-server"]);
+gulp.task("default", ["dev-server"]);
 
 // Build and watch cycle (another option for development)
 // Advantage: No server required, can run app from filesystem
 // Disadvantage: Requests are not blocked until bundle is available,
 //               can serve an old app on refresh
 gulp.task("build-dev", ["webpack:build-dev"], function() {
-    gulp.watch(["app/**/*"], ["webpack:build-dev"]);
+    gulp.watch(["src/**/*"], ["webpack:build-dev"]);
 });
 
 // Production build
@@ -66,7 +66,7 @@ gulp.task("webpack:build-dev", function(callback) {
     });
 });
 
-gulp.task("webpack-dev-server", function(callback) {
+gulp.task("dev-server", function(callback) {
     // modify some webpack config options
     var myConfig = Object.create(webpackConfig);
     myConfig.devtool = "eval";
