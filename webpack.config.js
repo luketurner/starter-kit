@@ -31,7 +31,7 @@ module.exports = {
             { test: /\.(coffee\.md|litcoffee)$/, loader: "coffee?literate" },
             
             // Images, fonts, etc.
-            { test: /\.(png|jpe?g|gif)$/,    loader: "url?limit=1000" },
+            { test: /\.(png|jpe?g|gif)$/,    loader: "url?limit=300" },
             { test: /\.(ttf|eot|svg|woff)(\?.+)?$/, loader: "file" }
         ]
     },
