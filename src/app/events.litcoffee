@@ -11,6 +11,11 @@ that are composed with all event handlers. Using services was chosen over
 allowing global handlers because services can do work both before and after
 the event handler executes.
 
+### Module declarations
+
+    Log          = require './log.coffee'
+    Events       = module.exports = {}
+
 ### Public Functions
 
 *__addHandler__(eventType, handlerFunc)*: adds a handler for a new event type.
@@ -46,8 +51,10 @@ send context or data.
 >     Events.emit type: "app:sampleevent", value: "a value"
 
     Events.emit = (data) ->
-      if not data.type then Log.error "no type property in event data", data
-      if not data.type of handlers
+      if not data.type
+        Log.error "no type property in event data", data
+        return
+      if data.type not of handlers
         Log.error "no handlers for event type", data
         return
       Log.debug "emitted #{data.type}"
@@ -60,9 +67,6 @@ send context or data.
 
 Maintain a private list of all registered handlers and services. `withServices(fn)` is
 a helper function for composing all the registered middlewares.
-
-    Log          = require './log.coffee'
-    Events       = module.exports = {}
 
     handlers     = {} # table mapping eventType -> handlerFunction
     services     = [] # list of middleware functions
