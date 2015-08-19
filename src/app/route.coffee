@@ -113,7 +113,7 @@
 ###
 
 Log           = require './log.coffee'
-Events        = require './events.coffee'
+Events        = require './events.litcoffee'
 someResult    = require './util/someResult.coffee'
 Route         = module.exports = {}
 

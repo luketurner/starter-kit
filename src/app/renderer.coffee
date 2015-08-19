@@ -33,7 +33,7 @@ matches         = require './util/matches.coffee'
 
 State           = require './state.coffee'
 Log             = require './log.coffee'
-Events          = require './events.coffee'
+Events          = require './events.litcoffee'
 Renderer        = module.exports = {}
 
 renderScheduled = true # if set to `true`, we will re-render on next loop

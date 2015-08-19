@@ -30,7 +30,7 @@
 clone           = require 'lodash.clone'
 merge           = require 'lodash.merge'
 State           = require './state.coffee'
-Events          = require './events.coffee'
+Events          = require './events.litcoffee'
 History         = module.exports = {}
 
 maxHistory      = 25 # max. number of history entries to maintain (to avoid ballooning memory usage)
