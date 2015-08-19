@@ -13,7 +13,7 @@ the event handler executes.
 
 ### Public Functions
 
-*addHandler(eventType, handlerFunc)*: adds a handler for a new event type.
+*__addHandler__(eventType, handlerFunc)*: adds a handler for a new event type.
 Only one handler is permitted per event type.
 
 >     Events.addHandler "app:sampleevent", (eventData) -> ...
@@ -23,7 +23,7 @@ Only one handler is permitted per event type.
       handlers[type] = handler
 
 
-*addService(middlewareFunc)*: adds a middleware handler, called a
+*__addService__(middlewareFunc)*: adds a middleware handler, called a
 "service". All services are triggered for every event.
 They let you add logic that runs before or after the event handler.
 Services are expected to use the following middleware pattern:
@@ -38,7 +38,7 @@ Services are expected to use the following middleware pattern:
       if svc in services then Log.warn "duplicate service added"
       services.push(svc)
 
-*emit(eventData)*: emits an event. The "type" property of the eventData object
+*__emit__(eventData)*: emits an event. The "type" property of the eventData object
 must indicate the event type. Attempts to emit an event with no handler will
 fail. Handlers are passed the whole object passed into emit, so use it to
 send context or data.
