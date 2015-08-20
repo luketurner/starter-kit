@@ -21,7 +21,7 @@ Route      = require './app/route.litcoffee'
 # a root view, which gives you a sense of the power that you
 # can achieve -- layouts, routes, and so forth. See notes in
 # app/route.coffee for more details on views.
-withLayout = require './layout.coffee'
+withLayout = require './layout.litcoffee'
 rootView = withLayout Route.defmulti(
   [/^(home)?$/, require './home/view.coffee']
   [/^about$/  , require './about/view.coffee']
