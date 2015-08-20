@@ -95,7 +95,7 @@ There are also other source files outside of ``app``, like `home/view`_, `about/
 .. _app/log: https://github.com/luketurner/starter-kit/blob/master/src/app/log.litcoffee
 .. _app/renderer: https://github.com/luketurner/starter-kit/blob/master/src/app/renderer.litcoffee
 .. _app/route: https://github.com/luketurner/starter-kit/blob/master/src/app/route.litcoffee
-.. _app/history: https://github.com/luketurner/starter-kit/blob/master/src/app/history.coffee
+.. _app/history: https://github.com/luketurner/starter-kit/blob/master/src/app/history.litcoffee
 .. _app/util: https://github.com/luketurner/starter-kit/blob/master/src/app/util
 
 Using Webpack
