@@ -1,11 +1,11 @@
 ###
-  Unit tests for /src/app/route.coffee
+  Unit tests for /src/app/route.litcoffee
 ###
 
 should = require 'should'
 h      = require 'virtual-dom/h'
 
-Route  = require '../src/app/route.coffee'
+Route  = require '../src/app/route.litcoffee'
 
 describe "Route", ->
   describe "#defroute", ->

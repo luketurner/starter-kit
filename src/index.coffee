@@ -15,7 +15,7 @@ require 'file?name=[name].[ext]!./index.html'
 # Require application components
 Renderer   = require './app/renderer.coffee'
 Log        = require './app/log.litcoffee'
-Route      = require './app/route.coffee'
+Route      = require './app/route.litcoffee'
 
 # Generate root view. Note that this is just an example of
 # a root view, which gives you a sense of the power that you
