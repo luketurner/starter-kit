@@ -1,8 +1,6 @@
 *__someResult__(funcs...)*: accepts any number of functions as parameters. Returns a function which, when called,
 will call each of the funcs in order and return the first non-falsy result.
 
-Tested in [`/test/util.litcoffee`](../../test/util.litcoffee).
-
 >     fn1 = (a) -> if a is "1" then "fn1 result" else null
 >     fn2 = (a) -> "fn2 result"
 >     fn = someResult(fn1, fn2)
@@ -15,3 +13,5 @@ Tested in [`/test/util.litcoffee`](../../test/util.litcoffee).
           result = fn(params...)
           return result if result
         null
+
+Unit tests in [`/test/util.litcoffee`](../../test/util.litcoffee).

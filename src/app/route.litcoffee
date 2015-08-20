@@ -1,5 +1,5 @@
 ## app/route
-#### Unit tests: [`/test/route.litcoffee`](../../test/route.litcoffee)
+##### Unit tests in [`/test/route.litcoffee`](../../test/route.litcoffee)
 
 Utility component that defines a minimal client-side view router.
 

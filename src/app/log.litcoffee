@@ -1,5 +1,5 @@
 ## app/log
-#### Unit tests: [`/test/log.litcoffee`](../../test/log.litcoffee)
+##### Unit tests in [`/test/log.litcoffee`](../../test/log.litcoffee)
 
 A simple, convenient logging utility. Supports 4 log levels: 0-error, 1-warn, 2-info, 3-debug.
 

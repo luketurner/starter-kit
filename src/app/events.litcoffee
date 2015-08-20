@@ -1,5 +1,5 @@
 ## app/events
-#### Unit tests: [`/test/events.litcoffee`](../../test/events.litcoffee)
+##### Unit tests in [`/test/events.litcoffee`](../../test/events.litcoffee)
 
 A singleton event emitter which supports middlewares. The event emitter is the backbone of the framework, so it's kept
 lightweight and generic.

@@ -1,5 +1,5 @@
 ## test/log
-#### Unit tests for [`/src/app/log.litcoffee`](../src/app/log.litcoffee)
+##### Unit tests for [`/src/app/log.litcoffee`](../src/app/log.litcoffee)
 
     Log = require '../src/app/log.litcoffee'
 

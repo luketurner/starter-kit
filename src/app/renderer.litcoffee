@@ -1,4 +1,4 @@
-### app/renderer
+## app/renderer
 
 Updates the DOM when the app state changes.
 

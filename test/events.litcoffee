@@ -1,5 +1,5 @@
 ## test/events
-#### Unit tests for [`/src/app/events.litcoffee`](../src/app/events.litcoffee)
+##### Unit tests for [`/src/app/events.litcoffee`](../src/app/events.litcoffee)
 
     Events = require '../src/app/events.litcoffee'
 

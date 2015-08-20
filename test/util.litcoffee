@@ -1,5 +1,5 @@
 ## test/util
-#### Unit tests for functions in [`/src/app/util`](../src/app/util).
+##### Unit tests for [`/src/app/util`](../src/app/util)
 
     matches    = require '../src/app/util/matches.litcoffee'
     someResult = require '../src/app/util/someResult.litcoffee'
