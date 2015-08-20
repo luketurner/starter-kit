@@ -1,10 +1,10 @@
 ## app/history
 
-An example component for supporting undoing (and redoing) changes to app/state.
+An example component for supporting undoing (and redoing) changes to [`app/state`](state.litcoffee).
 It's likely that you will need to hack on this for your particular application.
 
 History is not enabled by default. To use it, you must `require` it from at least
-one other component. For example, in `/src/index.coffee`, you could add:
+one other component. For example, in [`index.litcoffee`](../index.litcoffee), you could add:
 
 >     History = require './app/history.litcoffee'
 

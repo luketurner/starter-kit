@@ -9,8 +9,8 @@ component works.
 
 ### Guide to View Functions
 
-In the starter-kit universe, a view is just a function that you call to get some virtual DOM.
-For example, using the virtual-dom library, you could write a view like this:
+In the `starter-kit` universe, a view is just a function that you call to get some virtual DOM.
+For example, using the `virtual-dom` library, you could write a view like this:
 
 >     h = require "virtual-dom/h"
 >     titleView = -> h "h1", "Home"
@@ -41,13 +41,15 @@ You can reuse `siteLayout()` on different pages, for example `siteLayout(homeVie
 which would return view functions that have the same header and footer but different content. Because layouts are
 just middlewares, they can be nested with composition.
 
+`starter-kit` comes with an example of a layout view: [`layout.litcoffee`](../layout.litcoffee).
+
 ### View data
 
 You might notice that the middleware presented above accepts a `data` parameter and passes it to the child view.
 This is a starter-kit idiom: the `data` object is a generic store for communicating context between the views.
 
 This is a powerful idiom, but you should use it sparingly. If you do have any particular data you want to store,
-think very carefully, because it should probably go in `app/state` instead. the `data` parameter is only for
+think very carefully, because it should probably go in [`app/state`](state.litcoffee) instead. the `data` parameter is only for
 view middlewares  to pass context to their child views, or similar inter-view communication uses.
 
 In other words, a good general rule is to only use `data` if you are trying to make a reusable partial view
@@ -124,6 +126,8 @@ able to access `data.username`. For example, if `data.path` is "user:1135", then
 Because the functions returned by `defroute` and `defmulti` are easily composable with regular views, it is easy to
 implement more complex routing structures with multiple nested views, different parts of the page being routed
 differently, and so forth.
+
+To see an example of `defmulti` in use, check out [`index.litcoffee`](../index.litcoffee)
 
     Route.defmulti = (routes...) ->
       someResult (@defroute(re, params...)(view) for [re, params..., view] in routes)...

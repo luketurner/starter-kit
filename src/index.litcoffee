@@ -38,11 +38,13 @@ to provide a template for the recommended architecture.
 This root view, like any complex Web view, uses a layout. Let's `require` that first. Note that `withLayout` is
 a middleware function, which means that it is passed a child view as a parameter, and returns a view function.
 
+Read more about layouts in the [`layout`](layout.litcoffee) file.
+
     withLayout = require './layout.litcoffee'
 
-Now we generate the root view. We use the `app/route` component to define a "routed view", which is a function whose
-result depends on the path, and wrap it in the layout by passing it to `withLayout`. We get a single `rootView`
-function, but it encapsulates a complex page with a constant header and footer but multiple potential bodies.
+Now we generate the root view. We use the [`app/route`](app/route.litcoffee) component to define a "routed view", which
+is a function whose result depends on the path, and wrap it in the layout by passing it to `withLayout`. We get a single
+`rootView` function, but it encapsulates a complex page with a constant header and footer but multiple potential bodies.
 
     rootView = withLayout Route.defmulti(
       [/^(home)?$/, require './home/view.coffee']
@@ -55,6 +57,7 @@ Change this for production!
     Log.logLevel = 3
     Log.info "Application Started"
 
-Finally, kick off the renderer. This is what draws the application's DOM. Pass it the routed `rootView` created before.
+Finally, kick off the [`renderer`](app/renderer.litcoffee). This is what draws the application's DOM. Pass it the routed
+`rootView` created before.
 
     Renderer.loop rootView

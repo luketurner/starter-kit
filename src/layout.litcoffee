@@ -1,7 +1,7 @@
 ## layout
 
 Provides an example of a "layout view", which is just a middleware function. See the comments in the
-`src/app/route.litcoffee` component for an extensive explanation of views.
+[`app/route`](app/route.litcoffee) component for an overview explanation of views.
 
 This particular layout would be written like so if we were using a more traditional templating lagnuage like Handlebars:
 

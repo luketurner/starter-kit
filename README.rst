@@ -86,17 +86,17 @@ There are also other source files outside of ``app``, like `home/view`_, `about/
   * - `app/util`_
     - Various utility functions that can be individually required if needed.
     
-.. _home/view: https://github.com/luketurner/starter-kit/blob/master/src/home/view.coffee
-.. _about/view: https://github.com/luketurner/starter-kit/blob/master/src/about/view.coffee
-.. _404: https://github.com/luketurner/starter-kit/blob/master/src/404.coffee
-.. _layout: https://github.com/luketurner/starter-kit/blob/master/src/layout.litcoffee
-.. _app/state: https://github.com/luketurner/starter-kit/blob/master/src/app/state.litcoffee
-.. _app/events: https://github.com/luketurner/starter-kit/blob/master/src/app/events.litcoffee
-.. _app/log: https://github.com/luketurner/starter-kit/blob/master/src/app/log.litcoffee
-.. _app/renderer: https://github.com/luketurner/starter-kit/blob/master/src/app/renderer.litcoffee
-.. _app/route: https://github.com/luketurner/starter-kit/blob/master/src/app/route.litcoffee
-.. _app/history: https://github.com/luketurner/starter-kit/blob/master/src/app/history.litcoffee
-.. _app/util: https://github.com/luketurner/starter-kit/blob/master/src/app/util
+.. _home/view: src/home/view.coffee
+.. _about/view: src/about/view.coffee
+.. _404: src/404.coffee
+.. _layout: src/layout.litcoffee
+.. _app/state: src/app/state.litcoffee
+.. _app/events: src/app/events.litcoffee
+.. _app/log: src/app/log.litcoffee
+.. _app/renderer: src/app/renderer.litcoffee
+.. _app/route: src/app/route.litcoffee
+.. _app/history: src/app/history.litcoffee
+.. _app/util: src/app/util
 
 Using Webpack
 =============
