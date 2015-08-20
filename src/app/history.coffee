@@ -29,7 +29,7 @@
 
 clone           = require 'lodash.clone'
 merge           = require 'lodash.merge'
-State           = require './state.coffee'
+State           = require './state.litcoffee'
 Events          = require './events.litcoffee'
 History         = module.exports = {}
 

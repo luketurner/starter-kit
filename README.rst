@@ -90,7 +90,7 @@ There are also other source files outside of ``app``, like `home/view`_, `about/
 .. _about/view: https://github.com/luketurner/starter-kit/blob/master/src/about/view.coffee
 .. _404: https://github.com/luketurner/starter-kit/blob/master/src/404.coffee
 .. _layout: https://github.com/luketurner/starter-kit/blob/master/src/layout.coffee
-.. _app/state: https://github.com/luketurner/starter-kit/blob/master/src/app/state.coffee
+.. _app/state: https://github.com/luketurner/starter-kit/blob/master/src/app/state.litcoffee
 .. _app/events: https://github.com/luketurner/starter-kit/blob/master/src/app/events.litcoffee
 .. _app/log: https://github.com/luketurner/starter-kit/blob/master/src/app/log.litcoffee
 .. _app/renderer: https://github.com/luketurner/starter-kit/blob/master/src/app/renderer.coffee

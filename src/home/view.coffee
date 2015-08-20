@@ -4,7 +4,7 @@
 ###
 
 h = require 'virtual-dom/h'
-State = require '../app/state.coffee'
+State = require '../app/state.litcoffee'
 Events = require '../app/events.litcoffee'
 
 # Example event handler definition.

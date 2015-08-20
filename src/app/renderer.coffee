@@ -31,7 +31,7 @@ createElement   = require 'virtual-dom/create-element'
 # see comments in util/matches.coffee for rationale.
 matches         = require './util/matches.coffee' 
 
-State           = require './state.coffee'
+State           = require './state.litcoffee'
 Log             = require './log.litcoffee'
 Events          = require './events.litcoffee'
 Renderer        = module.exports = {}
