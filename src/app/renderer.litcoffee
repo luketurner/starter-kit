@@ -46,11 +46,10 @@ Defining some private state:
     oldVDom         = null # contains old dom for diffing purposes
     parentNode      = null # points to a real DOM node
 
-Now, we add a service that will set `renderScheduled` whenever it encounters an event which:
-
-1. changed app/state
-
-2. has the `render` property set to `true` in event data
+Now, we add a service that will set `renderScheduled` whenever it encounters an event which has changed `app/state`.
+In a well-designed `starter-kit` application, all view-related data is stored in `app/state`, so we only need to
+re-render the virtual DOM if `app/state` changed. However, this behavior can be overridden to force a re-render without
+updating `app/state`. Just set `render` to `true` in the event's data context.
 
     Events.addService (next) ->
       (data) ->
@@ -88,9 +87,6 @@ Passes `location.hash` as the `path` property in the view data. This property is
 
 Finally, it's the main renderer loop function described at the top of the file!
 This kicks off a loop which will trigger a re-render if `renderScheduled` is set.
-Because the loop only runs every 16 ms (the usual duration of a frame retrieved by
-`requestAnimationFrame`), we are basically throttling the rendering to 60 fps, thereby
-avoiding wasteful re-rendering even if renders are triggered back-to-back.
 
     Renderer.loop = (view) ->
       _loop = ->
