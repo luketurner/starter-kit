@@ -4,11 +4,25 @@ should = require 'should'
 sinon  = require 'sinon'
 require 'should-sinon'
 
-Log.logger = log: sinon.spy() # stop Log calls from displaying in console
-sinon.spy(Log, "error")
+oldLogger = null
+oldError = null
 
-describe "Events", () ->
-  it "should call registered handlers when event is emitted", () ->
+describe "Events", ->
+  before ->
+    oldLogger = Log.logger
+    oldError = Log.error
+    Log.logger = log: sinon.spy() # stop Log calls from displaying in console
+    sinon.spy Log, "error"
+
+  beforeEach ->
+    Log.logger.log.reset()
+    Log.error.reset()
+
+  after ->
+    Log.logger = oldLogger
+    Log.error = oldError
+
+  it "should call registered handlers when event is emitted", ->
 
     Events.addHandler "test:key", (d) ->
       d.type.should.equal "test:key"
@@ -24,7 +38,7 @@ describe "Events", () ->
     Log.error.should.be.calledWith "no type property in event data"
     Log.error.should.be.calledTwice()
 
-  it "should call middlewares in order", () ->
+  it "should call middlewares in order", ->
 
     Events.addService (next) ->
       (data) ->
@@ -44,7 +58,7 @@ describe "Events", () ->
 
     Events.emit type: "test:key"
 
-  it "should call middlewares even on handlers added later", () ->
+  it "should call middlewares even on handlers added later", ->
     Events.addHandler "test:later", (d) ->
       d.should.have.property "path"
 
