@@ -1,4 +1,4 @@
-Log    = require '../src/app/log.coffee'
+Log    = require '../src/app/log.litcoffee'
 Events = require '../src/app/events.litcoffee'
 should = require 'should'
 sinon  = require 'sinon'

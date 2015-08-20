@@ -112,7 +112,7 @@
   about 20 lines of code.
 ###
 
-Log           = require './log.coffee'
+Log           = require './log.litcoffee'
 Events        = require './events.litcoffee'
 someResult    = require './util/someResult.coffee'
 Route         = module.exports = {}

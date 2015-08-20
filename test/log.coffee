@@ -1,8 +1,8 @@
 ###
-  Unit tests for /src/app/log.coffee
+  Unit tests for /src/app/log.litcoffee
 ###
 
-Log = require '../src/app/log.coffee'
+Log = require '../src/app/log.litcoffee'
 
 should = require 'should'
 sinon  = require 'sinon'

@@ -13,7 +13,7 @@ the event handler executes.
 
 ### Module declarations
 
-    Log          = require './log.coffee'
+    Log          = require './log.litcoffee'
     Events       = module.exports = {}
 
 ### Public Functions
