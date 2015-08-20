@@ -66,7 +66,7 @@ First, let's set up our module namespace:
 
     Log           = require './log.litcoffee'
     Events        = require './events.litcoffee'
-    someResult    = require './util/someResult.coffee'
+    someResult    = require './util/someResult.litcoffee'
     Route         = module.exports = {}
 
 Now on to the definitions of `defroute` and `defmulti`.

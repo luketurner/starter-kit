@@ -4,8 +4,8 @@
 
 should = require 'should'
 
-matches    = require '../src/app/util/matches.coffee'
-someResult = require '../src/app/util/someResult.coffee'
+matches    = require '../src/app/util/matches.litcoffee'
+someResult = require '../src/app/util/someResult.litcoffee'
 
 describe "Util", ->
   describe "#matches", ->

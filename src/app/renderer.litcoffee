@@ -30,7 +30,7 @@ First, some `virtual-dom` requires (each function is exposed as a module):
 We are using our own `matches` implementation instead of `lodash.matches`, because the `lodash` version does not
 detect when new properties are added to `app/state`, only when existing proeprties are changed or removed.
 
-    matches         = require './util/matches.coffee'
+    matches         = require './util/matches.litcoffee'
 
 Other required components:
 
