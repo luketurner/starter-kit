@@ -95,11 +95,11 @@ Will overwrite any existing history. Returns `true` if loading was successful, `
       catch
         false
 
-The history service clones `app/state` into our `history` array if the event data's `historical` property is truthy.
+The history middleware clones `app/state` into our `history` array if the event data's `historical` property is truthy.
 This is what actually accumulates the undo history, and it's active automatically, but only if you set the `historical`
 property on your event data (for example, in your call to `Event.emit`).
 
-    Events.addService (next) ->
+    Events.addMiddleware (next) ->
       (data) ->
         next(data)
         if data.historical

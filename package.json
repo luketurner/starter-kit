@@ -9,7 +9,7 @@
   "scripts": {
     "build": "gulp build",
     "start": "gulp webpack-dev-server",
-    "test": "mocha --compilers coffee:coffee-script/register"
+    "test": "mocha --compilers litcoffee:coffee-script/register"
   },
   "dependencies": {
     "lodash.clone": "^3.0.2",

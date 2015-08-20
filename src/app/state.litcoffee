@@ -7,7 +7,7 @@ Let's define it right now:
 
     module.exports = {}
 
-Yep, that's all. We could replace `app/state` with a global variable,
+That's it! We could replace `app/state` with a global variable,
 but using a module is more idiomatic for `webpack`-based projects.
 
 `app/state` could also be created as an Immstruct, in-memory DB, Backbone model, etc.

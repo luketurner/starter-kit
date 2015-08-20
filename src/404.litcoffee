@@ -1,6 +1,7 @@
 ### 404.litcoffee
 
-Fallback view used when no other matching view is found.
+Fallback view used when no other matching view is found. Used by the routed view declared in
+[`index.litcoffee`](index.litcoffee).
 
     h = require 'virtual-dom/h'
 

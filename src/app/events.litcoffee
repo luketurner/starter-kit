@@ -1,15 +1,23 @@
 ## app/events
+#### Unit tests: [`/test/events.litcoffee`](../../test/events.litcoffee)
 
-A singleton event emitter that wires everything together.
+A singleton event emitter which supports middlewares. The event emitter is the backbone of the framework, so it's kept
+lightweight and generic.
 
-In simplest form, an event emitter is just a kind of dispatch table, where
-you add handlers to the table and then the `emit()` call looks up the handler
-for the specified event and calls it.
+In simplest form, an event emitter is just a kind of dispatch table, where you add handlers to the table and then the
+`emit()` call looks up the handler for the specified event and calls it.
 
-This implementation also adds *services*, which are middleware functions
-that are composed with all event handlers. Using services was chosen over
-allowing global handlers because services can do work both before and after
-the event handler executes.
+This implementation also adds support for middlewares, which are just functions that use the following format:
+
+>     middlewareFunction = (next) ->
+>       (data) ->
+>         # pre-execute stuff
+>         next(data)
+>         # post-execute stuff
+
+These are very similar to the middlewares in Express, message handlers in ASP.NET, etc. They give us more power than
+"global event handlers" like Backbone offers, because we can execute our own logic before and after the other handler
+executes.
 
 ### Module declarations
 
@@ -28,24 +36,21 @@ Only one handler is permitted per event type.
       handlers[type] = handler
 
 
-*__addService__(middlewareFunc)*: adds a middleware handler, called a
-"service". All services are triggered for every event.
-They let you add logic that runs before or after the event handler.
-Services are expected to use the following middleware pattern:
+*__addMiddleware__(middlewareFunc)*: adds a middleware handler, which is composed with every event handler. You are able
+to add your own code to execute both before and after the event, and even abort the event completely.
 
->     Events.addService (next) ->
+>     Events.addMiddleware (next) ->
 >       (data) ->
 >         # pre-execute stuff
 >         next(data)
 >         # post-execute stuff
 
-    Events.addService = (svc) ->
-      if svc in services then Log.warn "duplicate service added"
-      services.push(svc)
+    Events.addMiddleware = (m) ->
+      if m in middlewares then Log.warn "duplicate middleware added"
+      middlewares.push(m)
 
-*__emit__(eventData)*: emits an event. The "type" property of the eventData object
-must indicate the event type. Attempts to emit an event with no handler will
-fail. Handlers are passed the whole object passed into emit, so use it to
+*__emit__(eventData)*: emits an event. The "type" property of the eventData object must indicate the event type.
+Attempts to emit an event with no handler will fail. Handlers are passed the whole object passed into emit, so use it to
 send context or data.
 
 >     Events.emit type: "app:sampleevent", value: "a value"
@@ -59,15 +64,15 @@ send context or data.
         return
       Log.debug "emitted #{data.type}"
       try
-        withServices(handlers[data.type])(data)
+        withMiddlewares(handlers[data.type])(data)
       catch error
         Log.error "exception while handling event. Event data:", data, " Ex:", error
 
 ### Private member declarations
 
-Maintain a private list of all registered handlers and services. `withServices(fn)` is
-a helper function for composing all the registered middlewares.
+Maintain a private list of all registered handlers and middlewares. `withMiddlewares(fn)` is a helper function for
+composing all the registered middlewares.
 
     handlers     = {} # table mapping eventType -> handlerFunction
-    services     = [] # list of middleware functions
-    withServices = (fn) -> (fn = svc(fn) for svc in services) and fn # middleware composer
+    middlewares     = [] # list of middleware functions
+    withMiddlewares = (fn) -> (fn = m(fn) for m in middlewares) and fn # middleware composer

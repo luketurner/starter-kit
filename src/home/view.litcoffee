@@ -1,8 +1,8 @@
 ## home/view
 
-View for sample Home component. We only need to do two things:
+View for sample Home component. We only need to do two things.
 
-First, Define any needed event handler:
+First, define any needed event handlers using [`app/events`](../app/events.litcoffee):
 
     State = require '../app/state.litcoffee'
     Events = require '../app/events.litcoffee'
@@ -11,7 +11,7 @@ First, Define any needed event handler:
       State.message = ev.message
 
 Since we update [`app/state`](../app/state.litcoffee) in our event handler, the
-['app/renderer'](../app/renderer.litcoffee) middleware will trigger a re-render.
+[`app/renderer`](../app/renderer.litcoffee) middleware will trigger a re-render.
 
 Second, we need to export a function which is called to render the view. In other words, the module itself is a
 function. It returns a `VTree`, which is the signature for a view function expected by the

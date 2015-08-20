@@ -5,7 +5,7 @@ Updates the DOM when the app state changes.
 This component is responsible for determining when and how we should render the view. We do not need to re-render
 every time the state changes, because those changes might be extremely rapid -- too rapid for the user to see.
 Instead, as a performance improvement, we use a requestAnimationFrame loop (which usually runs once every 16 ms).
-A renderer service will do an equality-check on the State after each event handler runs, and if there are any
+A renderer middleware will do an equality-check on the State after each event handler runs, and if there are any
 changes, we flag that rendering should happen on the next animation frame.
 
 This component is also responsible for setting `path` on the `data` parameter which is passed to the view. For more
@@ -46,12 +46,12 @@ Defining some private state:
     oldVDom         = null # contains old dom for diffing purposes
     parentNode      = null # points to a real DOM node
 
-Now, we add a service that will set `renderScheduled` whenever it encounters an event which has changed `app/state`.
+Now, we add a middleware that will set `renderScheduled` whenever it encounters an event which has changed `app/state`.
 In a well-designed `starter-kit` application, all view-related data is stored in `app/state`, so we only need to
 re-render the virtual DOM if `app/state` changed. However, this behavior can be overridden to force a re-render without
 updating `app/state`. Just set `render` to `true` in the event's data context.
 
-    Events.addService (next) ->
+    Events.addMiddleware (next) ->
       (data) ->
         match = matches(State)
         next(data)
