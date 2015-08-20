@@ -13,7 +13,7 @@ require '../bower_components/skeleton/css/skeleton.css'
 require 'file?name=[name].[ext]!./index.html'
 
 # Require application components
-Renderer   = require './app/renderer.coffee'
+Renderer   = require './app/renderer.litcoffee'
 Log        = require './app/log.litcoffee'
 Route      = require './app/route.litcoffee'
 
