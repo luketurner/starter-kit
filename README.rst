@@ -48,7 +48,7 @@ Then you can use the build scripts::
   gulp build-dev   development build with file watcher on /src
   gulp build       release build - produces uglified, production ready code in /dist
   
-The "entry point" for the application's compile process is ``src/index.coffee``. It is initialized with a simple example application with two views, ``about`` and ``home``. You will probably want to remove the ``src/about`` and ``src/home`` folders after you get a sense of how views and routing work, and update the ``index.coffee`` to use your custom views and other components.
+The "entry point" for the application's compile process is ``src/index.litcoffee``. It is initialized with a simple example application with two views, ``about`` and ``home``. You will probably want to remove the ``src/about`` and ``src/home`` folders after you get a sense of how views and routing work, and update the ``index.litcoffee`` to use your custom views and other components.
 
 You may use whatever file structure you want to organize your code and other assets inside ``/src``. Perhaps you put all your SASS in ``/src/styles``, views in ``/src/views``, etc. However, I recommend that you use the strategy outlined in `Angular Best Practices for App Structure`_. In short, the idea is that you separate your application into logical units, like ``main``, ``editor``, ``detailView``, ``adminLogin``, etc. and make a separate folder for each unit. Then the folder will contain everything the unit needs -- a view, CoffeeScript modules, stylesheets, image assets, etc. This is a kind of domain-driven method in which the file structure represents the logical structure of the application, and each logical component is encapsulated in a single folder instead of spread out among multiple directories.
 
@@ -103,7 +103,7 @@ Using Webpack
 
 ``starter-kit`` makes heavy use of webpack_ for including assets. Instead of adding ``script`` and ``link`` tags to your ``index.html``, with webpack you are able to just ``require './code.coffee'`` or ``require './style.scss'``, and the expected thing happens. The filetypes which are enabled in ``starter-kit`` are listed in the table below.
 
-The webpack entry point is defined to be ``src/index.coffee``, which means that ``webpack`` will start with ``index.coffee`` and recursively include everything. If a file is never required in ``index.coffee`` or any other files found in this recursive walk, then it will not be included.
+The webpack entry point is defined to be ``src/index.litcoffee``, which means that ``webpack`` will start with ``index.litcoffee`` and recursively include everything. If a file is never required in ``index.litcoffee`` or any other files found in this recursive walk, then it will not be included.
 
 .. list-table::
 

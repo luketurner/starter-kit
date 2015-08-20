@@ -13,7 +13,7 @@ var path = require("path");
 
 module.exports = {
     cache: true,
-    entry: "./src/index.coffee",
+    entry: "./src/index.litcoffee",
     output: {
         path: path.join(__dirname, "dist"),
         publicPath: "",
