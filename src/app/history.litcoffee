@@ -1,4 +1,4 @@
-### app/history
+## app/history
 
 An example component for supporting undoing (and redoing) changes to app/state.
 It's likely that you will need to hack on this for your particular application.
@@ -15,7 +15,7 @@ If a historical event is emitted, we make a deep copy of app/state and store it 
 If undo(), undoAll(), redo(), or redoAll() are called, we reset the app/state to the stored value.
 Does not include history branching -- if you undo, and then make a change, you cannot redo what you undid.
 
-Dependencies
+Dependencies:
 
     clone           = require 'lodash.clone'
     merge           = require 'lodash.merge'
@@ -24,7 +24,7 @@ Dependencies
     History         = module.exports = {}
 
 
-Private variables
+Private variables:
 
     maxHistory      = 25 # max. number of history entries to maintain (to avoid ballooning memory usage)
     history         = [] # internal array of historical states
@@ -35,13 +35,13 @@ Private variables
     indexKey        = "{BD01A20A-EF1D-4D80-A3ED-344660125AFF}_Index" # localStorage key for currentIndex
 
 
-Private utility functions
+Private utility functions:
 
     storeHistory = -> if useLocalStorage then window.localStorage.setItem historyKey, JSON.stringify(history)
     storeIndex   = -> if useLocalStorage then window.localStorage.setItem indexKey, currentIndex
 
 
-This private utility function merges the object at given history index back into the `app/state`.
+This private utility function merges the object at given history index back into the `app/state`:
 
     load = (index) ->
       currentIndex = index
