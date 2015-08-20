@@ -47,9 +47,9 @@ is a function whose result depends on the path, and wrap it in the layout by pas
 `rootView` function, but it encapsulates a complex page with a constant header and footer but multiple potential bodies.
 
     rootView = withLayout Route.defmulti(
-      [/^(home)?$/, require './home/view.coffee']
-      [/^about$/  , require './about/view.coffee']
-      [/.*/       , require './404.coffee'])
+      [/^(home)?$/, require './home/view.litcoffee']
+      [/^about$/  , require './about/view.litcoffee']
+      [/.*/       , require './404.litcoffee'])
 
 Logging setup happens here. Log level 3 means all log emssages are shown, even debug messages.
 Change this for production!

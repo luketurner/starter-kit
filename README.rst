@@ -86,9 +86,9 @@ There are also other source files outside of ``app``, like `home/view`_, `about/
   * - `app/util`_
     - Various utility functions that can be individually required if needed.
     
-.. _home/view: src/home/view.coffee
-.. _about/view: src/about/view.coffee
-.. _404: src/404.coffee
+.. _home/view: src/home/view.litcoffee
+.. _about/view: src/about/view.litcoffee
+.. _404: src/404.litcoffee
 .. _layout: src/layout.litcoffee
 .. _app/state: src/app/state.litcoffee
 .. _app/events: src/app/events.litcoffee
