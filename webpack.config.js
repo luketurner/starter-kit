@@ -7,15 +7,12 @@
  *  - .jpeg, .png, .gif
  *    - copied to dist folder, "require" returns URL reference 
  */
-
-var webpack = require("webpack");
-var path = require("path");
-
+ 
 module.exports = {
     cache: true,
     entry: "./src/index.litcoffee",
     output: {
-        path: path.join(__dirname, "dist"),
+        path: "./dist",
         publicPath: "",
         filename: "main.js"
     },
