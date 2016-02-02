@@ -9,7 +9,7 @@ one other component. For example, in [`index.litcoffee`](../index.litcoffee), yo
 >     History = require './app/history.litcoffee'
 
 Because it doesn't make sense for every event to be undo-able, this component only
-allows you to undo events that have the "historical" property set in their event data.
+undoes events that have the "historical" property set in their event data.
 
 If a historical event is emitted, we make a deep copy of app/state and store it in our history.
 If undo(), undoAll(), redo(), or redoAll() are called, we reset the app/state to the stored value.
@@ -41,7 +41,7 @@ Private utility functions:
     storeIndex   = -> if useLocalStorage then window.localStorage.setItem indexKey, currentIndex
 
 
-This private utility function merges the object at given history index back into the `app/state`:
+This private function merges the object at given history index back into the `app/state`:
 
     load = (index) ->
       currentIndex = index
@@ -69,7 +69,7 @@ This private utility function merges the object at given history index back into
     History.undoAll = -> if currentIndex > 0 then load(0)
 
 
-*__redoAll()__*: Updates `app/state` to the most recent (i.e. newest) historical state. Like reod(), has no effect
+*__redoAll()__*: Updates `app/state` to the most recent (i.e. newest) historical state. Like redo(), has no effect
   unless `undo` or `undoAll` were called immediately beforehand.
 
     History.redoAll = -> if history.length > currentIndex + 1 then load(history.length - 1)
@@ -96,8 +96,8 @@ Will overwrite any existing history. Returns `true` if loading was successful, `
         false
 
 The history middleware clones `app/state` into our `history` array if the event data's `historical` property is truthy.
-This is what actually accumulates the undo history, and it's active automatically, but only if you set the `historical`
-property on your event data (for example, in your call to `Event.emit`).
+This is what actually accumulates the undo history. It activates automatically if you `require` this file, but only
+affects events with the `historical` property set on their event data.
 
     Events.addMiddleware (next) ->
       (data) ->
