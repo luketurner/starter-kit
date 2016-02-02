@@ -5,7 +5,7 @@
   "repository": "https://github.com/luketurner/starter-kit",
   "author": "Luke Turner",
   "license": "MIT",
-  "main": "src/index.coffee",
+  "main": "src/index.litcoffee",
   "scripts": {
     "build": "gulp build",
     "start": "gulp webpack-dev-server",
