@@ -1,4 +1,4 @@
-    **WARNING**: This scaffold is about 4 years old, and the libraries it depends on have experienced breaking changes and security issues. And since I no longer recommend using CoffeeScript or Gulp for new projects, this repository is not likely to ever be fixed. Therefore, you **should not** using this project anymore.
+    **WARNING**: This scaffold is about 4 years old, and the libraries it depends on have experienced breaking changes and security issues. And since I no longer recommend using CoffeeScript or Gulp for new projects, this repository is not likely to ever be fixed. Therefore, you **should not use** this project anymore.
 
 Getting started with client-side development
 ============================================
