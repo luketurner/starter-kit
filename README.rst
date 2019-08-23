@@ -1,9 +1,12 @@
+    **WARNING**: This scaffold is about 4 years old, and the front-end landscape has changed since then. The tools have changed, so this repository no longer works. And since I no longer recommend using CoffeeScript or Gulp for new projects, it is not likely to ever be fixed.
+
 Getting started with client-side development
 ============================================
 
+
 starter-kit_ is a scaffold for quickly getting started on a new client-side application, like what you might find on yeoman_. 
 
-The starter-kit scaffold has two major parts. The first part is what you might think of as traditional scaffolding: sane, integrated configurations for npm_, bower_, webpack_, and gulp_. If that's all you want, check out the build-only_ branch.
+The starter-kit scaffold has two major parts. The first part is what you might think of as traditional scaffolding: sane, integrated configurations for npm_, bower_, webpack_, and gulp_.
 
 The second part is more unusual, and a lot more interesting: a set of modular and hackable components, written in CoffeeScript, that can be used to jump-start your SPA development. These components live right alongside the rest of your application code, not hidden away inside the ``node_modules`` folder, so that you can easily extend or adjust or replace them as your application evolves.
 
