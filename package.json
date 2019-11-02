@@ -13,7 +13,7 @@
   },
   "dependencies": {
     "lodash.clone": "^3.0.2",
-    "lodash.merge": "^3.3.2",
+    "lodash.merge": "^4.6.2",
     "virtual-dom": "^2.0.1"
   },
   "devDependencies": {
